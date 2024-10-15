@@ -1,0 +1,87 @@
+<div class="container-fluid">
+    <form  [formGroup]="createUserForm" (ngSubmit)="createUser()">
+
+
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input id="firstName" type="text" formControlName="firstName" placeholder="First Name" class="form-control">
+            <small class="text-danger" *ngIf="firstName?.hasError('required') && firstName?.touched">firstName
+                required</small>
+
+            <small class="text-danger" *ngIf="firstName?.hasError('maxLength') && firstName?.touched">firstName is
+                longer</small>
+        </div>
+        <br>
+
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input id="lastName" type="text" formControlName="lastName" placeholder="Last Name" class="form-control">
+            <small class="text-danger" *ngIf="lastName?.hasError('required') && lastName?.touched">lastName
+                required</small>
+
+            <small class="text-danger" *ngIf="lastName?.hasError('maxLength') && lastName?.touched">lastName is
+                longer</small>
+        </div>
+        <br>
+
+        <div class="form-group">
+            <label for="vat">Vat</label>
+            <input id="vat" type="text" formControlName="vat" placeholder="Vat" class="form-control">
+
+            <small class="text-danger" *ngIf="vat?.hasError('required') && vat?.touched">vat required</small>
+
+            <small class="text-danger" *ngIf="vat?.hasError('maxLength') && vat?.touched">vat is longer</small>
+
+        </div>
+        <br>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" type="text" formControlName="email" placeholder="Email" class="form-control">
+
+            <small class="text-danger" *ngIf="email?.hasError('required') && email?.touched">email required</small>
+
+            <small class="text-danger" *ngIf="email?.hasError('maxLength') && email?.touched">email is longer</small>
+
+            <small class="text-danger" *ngIf="email?.hasError('email') && email?.touched">not correct</small>
+
+        </div>
+        <br>
+
+
+        <div class="form-group">
+            <label for="mobilePhone">mobilePhone</label>
+            <input id="mobilePhone" type="text" formControlName="mobilePhone" placeholder="Mobile Phone"
+                class="form-control">
+
+            <small class="text-danger" *ngIf="mobilePhone?.hasError('required') && mobilePhone?.touched">mobilePhone
+                required</small>
+
+            <small class="text-danger" *ngIf="mobilePhone?.hasError('maxLength') && mobilePhone?.touched">mobilePhone is
+                longer</small>
+
+            <small class="text-danger" *ngIf="mobilePhone?.hasError('pattern') && mobilePhone?.touched"> wrong
+                pattern</small>
+        </div>
+        <br>
+
+
+        <button type="submit" class="btn btn-primary" [disabled]="createUserForm.invalid">Create User</button>
+
+        <button class="btn btn-secondary ms-1" (click)="goTable()">Back to Home</button>
+        <br>
+
+
+        <div class="alert alert-success mt-4" *ngIf="viewMessage!=''">
+            {{ viewMessage }}
+        </div>
+        <div class="alert alert-danger mt-4" *ngIf="errorMessage!=''">
+            {{ errorMessage }}
+        </div>
+
+
+
+    </form>
+
+
+</div>

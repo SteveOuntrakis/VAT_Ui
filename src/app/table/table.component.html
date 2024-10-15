@@ -1,0 +1,29 @@
+<div class="container">
+ 
+    <div *ngIf="!users || users.length === 0">
+      <p>No users found.</p>
+    </div>
+    <br>
+    <div class="row" *ngIf="users && users.length > 0">
+
+      <div class="alert alert-success">
+        <input type="text" id="vat" [(ngModel)]="vatRequest" placeholder="Type VAT for the user you want:"
+          class="form-control w-100">
+      </div>
+
+      <div *ngFor="let user of users" class="col-md-6 col-lg-4">
+        <div *ngIf="(user.vat == vatRequest) || vatRequest ==''" class="card user-card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">{{ user.firstName }} {{ user.lastName }}</h5>
+            <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
+            <p class="card-text"><strong>VAT:</strong> {{ user.vat }}</p>
+            <p class="card-text"><strong>mobilePhone:</strong> {{ user.mobilePhone }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" (click)="goCustomer()">create Customer</button>
+  
+
+</div>
