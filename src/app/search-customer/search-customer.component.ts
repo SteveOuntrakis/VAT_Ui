@@ -1,5 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CustomerService } from '../services/customer.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-customer',
@@ -11,6 +12,7 @@ export class SearchCustomerComponent implements OnInit{
   private service = inject(CustomerService);
   user: any;
   vatRequest : string ="";
+  router =inject(Router);
   
 
   ngOnInit() {
@@ -25,6 +27,10 @@ export class SearchCustomerComponent implements OnInit{
       error: err => console.error(`Something is wrong... ${err}`),
       complete: () => console.log('Data Fetch completed...')
     });
+  }
+
+  goTable(){
+    this.router.navigate(['table']);
   }
 
 }

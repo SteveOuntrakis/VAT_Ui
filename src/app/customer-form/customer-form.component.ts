@@ -16,11 +16,7 @@ export class CustomerFormComponent implements OnInit {
   viewMessage :string ='';  
   errorMessage:string ='';
 
-  router =inject(Router);
-  
-  goTable(){
-    this.router.navigate(['table']);
-  }
+  router =inject(Router); 
 
   ngOnInit(): void {
     this.createUserForm = this.fb.group({
@@ -70,5 +66,9 @@ export class CustomerFormComponent implements OnInit {
 
   get mobilePhone(){
     return this.createUserForm.get('mobilePhone');
+  }
+
+  goTable(){
+    this.router.navigate(['table']);
   }
 }
