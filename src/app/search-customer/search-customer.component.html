@@ -2,8 +2,8 @@
     <input type="text" id="vat" [(ngModel)]="vatRequest" placeholder="Type VAT for the user you want:" class="form-control w-100">
 </div>
 
-<div *ngIf="!user || user.length() == 0">
-    <p>No users found.</p>    
+<div *ngIf="vatRequest!='' || user.length() == 0">
+    <h5>No users found.</h5>    
 </div>
 
 <div class="row" *ngIf="user.length() > 0">

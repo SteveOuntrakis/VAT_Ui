@@ -13,7 +13,7 @@ export class TableComponent implements OnInit{
   service = inject(CustomerService);
   users: any= [];
   vatRequest : string ="";
-  message : string ="loading...";
+  message : string ="Loading...";
 
   ngOnInit():void {
     this.service.getUsers().subscribe({
