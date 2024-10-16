@@ -11,19 +11,20 @@
           class="form-control w-100">
       </div>
 
-      <div *ngFor="let user of users" class="col-md-6 col-lg-4">
+      <div *ngFor="let user of users " class="col-md-6 col-lg-4">
         <div *ngIf="(user.vat == vatRequest) || vatRequest ==''" class="card user-card mb-4">
           <div class="card-body">
             <h5 class="card-title">{{ user.firstName }} {{ user.lastName }}</h5>
             <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
             <p class="card-text"><strong>VAT:</strong> {{ user.vat }}</p>
-            <p class="card-text"><strong>mobilePhone:</strong> {{ user.mobilePhone }}</p>
+            <p class="card-text"><strong>Mobile Phone:</strong> {{ user.mobilePhone }}</p>
           </div>
         </div>
       </div>
     </div>
 
-    <button class="btn btn-primary" (click)="goCustomer()">create Customer</button>
+    <button class="btn btn-primary" (click)="goCustomer()">Create Customer</button>
+    <button class="btn btn-primary" (click)="goToSearch()">Search Customer</button>
   
 
 </div>

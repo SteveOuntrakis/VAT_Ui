@@ -13,6 +13,9 @@ export class TableComponent implements OnInit{
   goCustomer(){
     this.router.navigate(['customer']);
   }
+  goToSearch(){
+    this.router.navigate(['search']);
+  }
 
   service = inject(CustomerService);
   users: any= [];

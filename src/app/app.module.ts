@@ -9,12 +9,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
 import { HttpClientModule} from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
+import { SearchCustomerComponent } from './search-customer/search-customer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomerFormComponent,
-    TableComponent
+    TableComponent,
+    SearchCustomerComponent
   ],
   imports: [
     BrowserModule,

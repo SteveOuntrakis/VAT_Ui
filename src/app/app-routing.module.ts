@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule, Routes } from '@angular/router';
 import { CustomerFormComponent } from './customer-form/customer-form.component';
 import { TableComponent } from './table/table.component';
+import { SearchCustomerComponent } from './search-customer/search-customer.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'table',
     component: TableComponent
+  },
+  {
+    path: 'search',
+    component: SearchCustomerComponent
   }
 ]
 
