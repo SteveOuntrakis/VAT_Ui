@@ -8,21 +8,22 @@ import { CustomerFormComponent } from '../customer-form/customer-form.component'
 })
 export class CustomerService {
   http = inject(HttpClient);
-  url :any=`https://demo3527896.mockable.io/customers`;
+  url :any=`http://172.16.111.95:8080/api/`;
   errorMessage!:string;
 
 
   getUsers(){
-    return this.http.get(this.url);
+    const userUrl ="customers"
+    return this.http.get(this.url + userUrl);
   }
   setError():string{
     return this.errorMessage;
   }
   createUser(data: any){
-    const userUrl ="https://demo2824826.mockable.io/customer"
+    const userUrl ="customer"
     const headers = new HttpHeaders()
     .set('Content-Type', 'application/json');
-    return this.http.post(userUrl, JSON.stringify(data), {headers: headers})
+    return this.http.post(this.url + userUrl, JSON.stringify(data), {headers: headers})
       .pipe(
         retry(1),
         catchError(error => throwError(() =>{
@@ -36,7 +37,7 @@ export class CustomerService {
 
 
   getUserByVat(userVat: String) {
-    return this.http.get(this.url)
+    return this.http.get(this.url + userVat)
       .pipe(
         retry(1),
         catchError((error) => {
