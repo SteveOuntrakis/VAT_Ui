@@ -23,9 +23,14 @@ export class SearchCustomerComponent implements OnInit{
   loadCustomerByVat() {
     this.service.getUserByVat(this.vatRequest).subscribe({
       next: (response: any) => {
+        this.message ="";
         this.user = response;
+        console.log(this.user);
       },
-      error: err => console.error(`Something is wrong... ${err}`),
+      error: err => {
+        this.message = "Doesn't exist";
+        console.error(`Something is wrong... ${err}`);
+      },
       complete: () => console.log('Data Fetch completed...')
     });
   }
