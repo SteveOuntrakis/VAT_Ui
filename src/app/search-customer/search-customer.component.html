@@ -1,9 +1,9 @@
 <div class="alert alert-success">
-    <input type="text" id="vat" [(ngModel)]="vatRequest" placeholder="Type VAT for the user you want:" class="form-control w-100">
+    <input type="text" id="vat" [(ngModel)]="vatRequest" placeholder="Search Vat Number" class="form-control w-100">
 </div>
 
 <div *ngIf="vatRequest!='' || user.length() == 0">
-    <h5>No users found.</h5>    
+    <h5>{{message}}</h5>    
 </div>
 
 <div class="row" *ngIf="user.length() > 0">

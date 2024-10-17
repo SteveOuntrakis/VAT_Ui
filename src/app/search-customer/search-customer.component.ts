@@ -13,6 +13,7 @@ export class SearchCustomerComponent implements OnInit{
   user: any;
   vatRequest : string ="";
   router =inject(Router);
+  message : string ="";
   
 
   ngOnInit() {
