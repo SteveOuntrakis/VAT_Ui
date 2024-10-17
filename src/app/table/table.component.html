@@ -1,18 +1,18 @@
 <div class="container">
- 
-    <div *ngIf="users.length === 0" class="alert alert-warning">
-      <h3>{{message}}</h3>
+
+  <div *ngIf="users.length == 0" class="alert alert-warning">
+    <h3>{{message}}</h3>
+  </div>
+  <br>
+
+  <div class="row" *ngIf="users.length > 0">
+    <div class="alert alert-success">
+      <input type="text" id="vat" [(ngModel)]="vatRequest" placeholder="Type VAT for the user you want:" class="form-control w-100">
     </div>
-    <br>
-    <div class="row" *ngIf="users.length > 0">
 
-      <div class="alert alert-success">
-        <input type="text" id="vat" [(ngModel)]="vatRequest" placeholder="Type VAT for the user you want:"
-          class="form-control w-100">
-      </div>
-
-      <div *ngFor="let user of users " class="col-md-6 col-lg-4">
-        <div *ngIf="(user.vat == vatRequest) || vatRequest ==''" class="card user-card mb-4">
+    <div *ngIf="vatRequest !=''">
+      <div *ngFor="let user of users" class="col-md-6 col-lg-4 d-flex align-items-stretch">
+        <div *ngIf="(user.vat == vatRequest) " class="card user-card mb-4">
           <div class="card-body">
             <h5 class="card-title">{{ user.firstName }} {{ user.lastName }}</h5>
             <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
@@ -21,15 +21,29 @@
           </div>
         </div>
       </div>
-      <br>
-      <div class="col-lg-4">
-        <button class="btn btn-primary" (click)="goCustomer()">Create Customer</button>
-        <button class="btn btn-primary" (click)="goToSearch()">Search Customer</button>
-      </div>
-  
-    
     </div>
 
-   
+    <div class="row" *ngIf="vatRequest ==''">
+      <div *ngFor="let user of users | slice:(page-1)*10:(page-1)*10+9" class="col-md-6 col-lg-4 d-flex align-items-stretch">
+        <div class="card user-card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">{{ user.firstName }} {{ user.lastName }}</h5>
+            <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
+            <p class="card-text"><strong>VAT:</strong> {{ user.vat }}</p>
+            <p class="card-text"><strong>Mobile Phone:</strong> {{ user.mobilePhone }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <div class="row-md-4">
+      <button class="btn btn-primary" (click)="prev()" *ngIf="(page > 1) && (vatRequest =='') ">Previous</button>
+  
+      <button class="btn btn-primary" (click)="next()" *ngIf="(users.length > (10 * page)) && (vatRequest=='')">Next</button>
+      <br>
+      <br>
+      <button class="btn btn-primary" (click)="goCustomer()">Create Customer</button>
+      <button class="btn btn-primary" (click)="goToSearch()">Search Customer</button>
+    </div>
+  </div>
 </div>

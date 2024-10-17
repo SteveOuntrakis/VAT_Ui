@@ -2,11 +2,12 @@
     <input type="text" id="vat" [(ngModel)]="vatRequest" placeholder="Search Vat Number" class="form-control w-100">
 </div>
 
-<div *ngIf="vatRequest!='' || user.length == 4">
+
+<div *ngIf="vatRequest!=''">
     <h5>{{message}}</h5>
 </div>
 
-<div *ngIf="(user.vat == vatRequest) || vatRequest ==''" class="card user-card mb-4">
+<div *ngIf="(user.vat == vatRequest)" class="card user-card mb-4">
     <div class="card-body">
         <h5 class="card-title">{{ user.firstName }} {{ user.lastName }}</h5>
         <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
@@ -17,3 +18,6 @@
 
 <button class="btn btn-secondary ms-1" (click)="goTable()">Back to Home</button>
 <button type="submit" class="btn btn-primary" (click)="loadCustomerByVat()">Search User</button>
+
+<!--  -->
+<!-- *ngIf="(user.vat == vatRequest) || vatRequest ==''"  -->

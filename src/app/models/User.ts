@@ -1,5 +1,5 @@
 export class User{
-    vat!: number;
+    vat!: string;
     firstName!: string;
     lastName!: string;
     email!: string;

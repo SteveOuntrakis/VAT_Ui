@@ -25,17 +25,6 @@
         <br>
 
         <div class="form-group">
-            <label for="vat">Vat</label>
-            <input id="vat" type="text" formControlName="vat" placeholder="Vat" class="form-control">
-
-            <small class="text-danger" *ngIf="vat?.hasError('required') && vat?.touched">vat required</small>
-
-            <small class="text-danger" *ngIf="vat?.hasError('maxLength') && vat?.touched">vat is longer</small>
-
-        </div>
-        <br>
-
-        <div class="form-group">
             <label for="email">Email</label>
             <input id="email" type="text" formControlName="email" placeholder="Email" class="form-control">
 
@@ -46,6 +35,19 @@
             <small class="text-danger" *ngIf="email?.hasError('email') && email?.touched">not correct</small>
 
         </div>
+        <br>
+        <div class="form-group">
+            <label for="vat">Vat</label>
+            <input id="vat" type="text" formControlName="vat" placeholder="Vat" class="form-control">
+
+            <small class="text-danger" *ngIf="vat?.hasError('required') && vat?.touched">vat required</small>
+
+            <small class="text-danger" *ngIf="vat?.hasError('maxLength') && vat?.touched">vat is longer</small>
+
+        </div>
+       
+
+        
         <br>
 
 

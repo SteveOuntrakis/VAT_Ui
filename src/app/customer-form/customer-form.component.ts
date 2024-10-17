@@ -31,13 +31,16 @@ export class CustomerFormComponent implements OnInit {
   createUser(){
     if (this.createUserForm.valid) {
       this.service.createUser(this.createUserForm.value).subscribe({
+    
         next: () => {
+          console.log("hellooooooo");
           this.errorMessage='';
           this.viewMessage =`The Customer has been successfully created.`;
           console.log("The Customer has been successfully created.");
          
         },
         error: err => {
+          console.log ("show error")
           this.viewMessage= '';
           this.errorMessage= this.service.setError();
           
