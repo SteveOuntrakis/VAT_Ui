@@ -9,7 +9,7 @@ import { User } from '../models/User';
 })
 export class CustomerService {
   http = inject(HttpClient);
-  url: any = `http://localhost:8081/api/`;
+  url: any = `http://172.16.112.37:8080/api/`;
   errorMessage!: string;
 
   getUsers(): Observable<User[]> {
