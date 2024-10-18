@@ -28,27 +28,22 @@ export class CustomerFormComponent implements OnInit {
     });
   }
 
-  createUser(){
+  createUser() {
     if (this.createUserForm.valid) {
       this.service.createUser(this.createUserForm.value).subscribe({
-    
-        next: () => {
-          console.log("hellooooooo");
-          this.errorMessage='';
-          this.viewMessage =`The Customer has been successfully created.`;
-          console.log("The Customer has been successfully created.");
-         
+        next: (response) => {
+          console.log('Response received:', response);
+          this.errorMessage = '';  // Clear the error message
+          this.viewMessage = 'The Customer has been successfully created.';
         },
-        error: err => {
-          console.log ("show error")
-          this.viewMessage= '';
-          this.errorMessage= this.service.setError();
-          
-        }
-          ,
+        error: (err) => {
+          console.error('Error response:', err.message);  // Log the error
+          this.viewMessage = '';  // Clear the success message
+          this.errorMessage = err.message;  // Set the error message from the service
+        },
         complete: () => console.log('Customer creation complete.')
       });
-    };
+    }
   }
 
   get firstName(){

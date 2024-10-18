@@ -9,7 +9,7 @@ import { User } from '../models/User';
 })
 export class CustomerService {
   http = inject(HttpClient);
-  url: any = `http://172.16.112.78:8080/api/`;
+  url: any = `http://localhost:8081/api/`;
   errorMessage!: string;
 
   getUsers(): Observable<User[]> {
@@ -21,12 +21,28 @@ export class CustomerService {
     return this.errorMessage;
   }
 
-  createUser(data: any) {
-    console.log("im in service");
-    const userUrl = "customer";
+  createUser(data: any): Observable<any> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    const newUrl = `http://172.16.112.78:8080/api/customer`;
-    return this.http.post(newUrl, JSON.stringify(data), { headers: headers });
+    const newUrl = this.url + "customer";
+    return this.http.post(newUrl, JSON.stringify(data), { headers: headers , responseType: 'text' })
+      .pipe(
+        catchError((error) => {
+          console.error('Error in createUser:', error);
+          return throwError(() => new Error(this.handleErrorResponse(error)));
+        })
+      );
+  }
+
+  private handleErrorResponse(error: any): string {
+    if (error.status === 400) {
+      return 'Bad Request: Please check VAT number';
+    } else if (error.status === 409) {
+      return 'Conflict: A customer with the same VAT already exists.';
+    } else if (error.status === 500) {
+      return 'Internal Server Error: Something went wrong on the server.';
+    } else {
+      return 'An unexpected error occurred.';
+    }
   }
 
   getUserByVat(userVat: String): Observable<User> {
